@@ -4,8 +4,21 @@ import Task from "./components/Task";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
 
+import styled, { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme, GlobalStyles } from "./themes.js";
+import Button from 'react-bootstrap/Button';
+
+import "./style1.css"
+
+
+
+const StyledApp = styled.div`
+  color: ${(props) => props.theme.fontColor};
+`;
+
 const App =() =>{
   const [showAddTask, setShowAddTask] = useState(false)
+  const [theme, setTheme] = useState("light");
   const[tasks, setTasks] = useState([
 
 
@@ -57,13 +70,34 @@ const toggleReminder = (id) => {
 }
 
 
+//theme Toggler
+
+const themeToggler = () => {
+  theme === "light" ? setTheme("dark") : setTheme("light");
+};
+
+
   return (
+
+    
+
     <div className="container">
+        <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <Header onAdd={() =>setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
       {showAddTask &&<AddTask onAdd={addTask}/>}
       {tasks.length >0 ? <Tasks tasks={tasks} onDelete={DeleteTask} onToggle ={toggleReminder}/> : 'No tasks to show'}
+      <GlobalStyles />
+      <StyledApp>
+      
+        <button onClick={() => themeToggler()} type="button" class="glow-on-hover"  >Dark Theme</button> {' '}
+      </StyledApp>
+      </ThemeProvider>
     </div>
+
+
+
   );
 }
 
 export default App
+
