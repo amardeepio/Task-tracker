@@ -48,7 +48,7 @@ const fetchTasks = async () => {
 // fetch Task data
 
 const fetchTask = async (id) => {
-  const res = await fetch(`http://localhost3:000/tasks/${id}`)
+  const res = await fetch(`http://localhost:3000/tasks/${id}`)
   const data = await res.json()
 
   return data
