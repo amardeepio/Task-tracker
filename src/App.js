@@ -133,7 +133,7 @@ const themeToggler = () => {
 
       {showAddTask &&<AddTask onAdd={addTask}/>}
       
-      {tasks.length >0 ? <Tasks tasks={tasks} onDelete={DeleteTask} onToggle ={toggleReminder}/> : 'no tasks to showwwww'}
+      {tasks.length >0 ? <Tasks tasks={tasks} onDelete={DeleteTask} onToggle ={toggleReminder}/> : 'no tasks to showwwwws'}
 
       </>
         }
