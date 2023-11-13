@@ -1,0 +1,28 @@
+name: Persimmon Versioning
+
+on:
+  pull_request:
+    branches: 
+      - master
+    types:
+      - closed
+   
+
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0 
+
+    - name: Git Semantic Version
+      uses: PaulHatch/semantic-version@v5.3.0
+      with:
+        branch: trunk
+        tag_prefix: "v"
+        version_format: "${major}.${minor}.patch${increment}"
