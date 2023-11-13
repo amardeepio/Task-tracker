@@ -1,16 +1,15 @@
-name: Persimmon Versioning
-
+name: Auto Tag my Application
 on:
-  pull_request:
-    branches: 
-      - master
+  push:
+    branches:
+      - main
  
    
 
 
 jobs:
-  if_merged:
-    if: github.event.pull_request.merged == true
+  version:
+    
     runs-on: ubuntu-latest
 
     steps:
